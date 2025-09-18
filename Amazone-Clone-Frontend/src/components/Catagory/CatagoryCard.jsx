@@ -1,14 +1,16 @@
-import styles from "./Catagory.module.css"
+import { Link } from "react-router-dom";
+import styles from "./Catagory.module.css";
+
 function CatagoryCard({ data }) {
   return (
     <div className={styles.catagory}>
-      <a href="#">
+      <Link to={`/category/${data.name}`}>
         <span>
-          <h2>{data.title}</h2>
+          <h2>{data?.name}</h2>
         </span>
-        <img src={data.image} alt={data.title} />
+        <img src={data?.image} alt={data?.title} />
         <p>Shop now</p>
-      </a>
+      </Link>
     </div>
   );
 }
