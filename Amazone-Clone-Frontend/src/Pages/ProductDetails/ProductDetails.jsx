@@ -4,36 +4,38 @@ import axios from "axios";
 import LayOut from "../../components/LayOut/LayOut";
 import ProductCard from "../../components/product/ProductCard";
 import { productUrl } from "../../Api/endPoints";
-import styles from "./ProductDetails.module.css";
+import Loader from "../../components/Loder/Loder";
 
 const ProductDetails = () => {
-  const { productId } = useParams(); // make sure your route matches :productId
+  const { productId } = useParams(); // route must be /product/:productId
   const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`${productUrl}/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
+        setIsLoading(false);
       });
-  }, []);
-
-  if (!product) {
-    return (
-      <LayOut>
-        <p>Loading product details...</p>
-      </LayOut>
-    );
-  }
+  }, [productId]);
 
   return (
     <LayOut>
-      <div className={styles.detailsWrapper}>
+      {isLoading ? (
+        <Loader />
+      ) : product ? (
+        // Pass single product as `product` prop, not `products`
         <ProductCard product={product} />
-      </div>
+      ) : (
+        <p>Product not found</p>
+      )}
     </LayOut>
   );
 };
