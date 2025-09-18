@@ -1,15 +1,16 @@
+/* Grid layout for product listing */
 .productGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
   gap: 10px; /* space between cards */
-  padding: 0; /* no extra padding on left/right */
-  
-  /* Restrict the overall container width */
-  max-width: 1200px; /* adjust as needed */
+  padding: 0; /* no extra padding */
+  max-width: 1200px; /* overall container width */
   margin: 0 auto; /* center the container */
   width: 100%;
   box-sizing: border-box;
 }
+
+/* Card styling for product grid */
 .card {
   width: 200px;
   border: 1px solid #ddd;
@@ -21,12 +22,14 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  position: relative; /* important for button positioning */
+  position: relative; 
 }
+
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
 .productImage {
   max-width: 100%;
   height: 150px;
@@ -46,7 +49,6 @@
   height: 40px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -69,6 +71,7 @@
   font-weight: bold;
   color: #111;
 }
+
 /* Add to Cart button hidden by default */
 .addToCart {
   margin-top: 8px;
@@ -89,4 +92,72 @@
 .card:hover .addToCart {
   opacity: 1;
   transform: translateY(0);
+}
+
+.product_fixed {
+  display: flex;
+  flex-direction: row;      /* image left, content right */
+  gap: 50px;                /* space between image and content */
+  width: 100%;
+  height: 50vh;             /* total container height */
+  box-shadow: none;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.product_fixed img {
+  width: 300px !important;  /* image size */
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.product_fixed .cardContent {               /* fill remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.product_fixed h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  padding: 0;               /* remove extra top/bottom space */
+  margin: 0;
+}
+
+.product_fixed .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #b12704;
+}
+
+.product_fixed .rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.product_fixed .addToCart {
+  display: block;
+  width: 150px;
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product_fixed .addToCart:hover {
+  background: #ddb347;
+}
+.product_fixed div {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  max-width: 750px;
 }

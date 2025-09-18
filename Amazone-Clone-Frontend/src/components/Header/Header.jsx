@@ -7,7 +7,7 @@ import LowerHeader from "./LowerHeader";
 
 const Header = () => {
   return (
-    <>
+    <section className={styles.fixed}>
       <section className={styles.header_container}>
         {/* Logo + Delivery */}
         <div className={styles.Logo_container}>
@@ -75,7 +75,7 @@ const Header = () => {
         </div>
       </section>
       <LowerHeader />
-    </>
+    </section>
   );
 };
 
