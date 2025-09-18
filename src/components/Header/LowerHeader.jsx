@@ -6,10 +6,11 @@ const LowerHeader = () => {
     <div className={styles.lower_container}>
       <ul>
         <li>
-          <AiOutlineMenu />
+          <AiOutlineMenu size={22} />
           <p>All</p>
         </li>
         <li>Today's Deals</li>
+        <li>Prime Video</li>
         <li>Customer service</li>
         <li>Registry</li>
         <li>Gift Cards</li>

@@ -21,7 +21,7 @@ const Header = () => {
               <SlLocationPin />
             </span>
             <div>
-              <p>Delivered to</p>
+              <p>Deliver to</p>
               <span>Ethiopia</span>
             </div>
           </div>
@@ -65,12 +65,15 @@ const Header = () => {
 
           {/* Cart */}
           <a href="#" className={styles.cart}>
-            <BiCart size={35} />
-            <span>0</span>
+            <div className={styles.iconWrapper}>
+              <BiCart size={35} />
+              <span className={styles.badge}>0</span>
+            </div>
+            <p>Cart</p>
           </a>
         </div>
       </section>
-    <LowerHeader />
+      <LowerHeader />
     </>
   );
 };

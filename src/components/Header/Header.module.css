@@ -1,10 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .header_container {
-  background-color: #232f3e; /* same as lower_container or a matching shade */
+  background-color: #131921; /* same as lower_container or a matching shade */
   display: flex;
   gap: 15px;
   align-items: center;
   color: white;
-  height: auto;
+  height: 70px;
+ 
 }
 .Logo_container {
   align-items: center;
@@ -19,15 +24,23 @@
   vertical-align: middle;
 }
 .delivery {
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
+  display: flex;         /* make children side by side */
+  align-items: center;   /* vertical centering */
+  gap: 6px;              /* spacing between icon and text */
   padding: 5px;
   font-weight: bold;
 }
+
 .delivery p {
-  font-size: 10px;
+  font-size: 12px;
+  margin: 0;             /* remove default p margin */
 }
+
+.delivery span {
+  display: block;        /* text span behaves like block inside */
+  font-size: 14px;
+}
+
 .search {
   display: flex;
   align-items: center;
@@ -89,17 +102,61 @@
 .language img {
   width: 40%;
 }
+
 .cart {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  color: white; /* "Cart" text */
+  cursor: pointer;
 }
+
+.iconWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.iconWrapper svg {
+  color: white;              /* cart icon color */
+  
+}
+
 .cart span {
   position: absolute;
+  top: -1px;
+  left: 20px;
+  background-color: black;  /* Amazon orange */
+  color:orange;
+  font-size: 16px;
   font-weight: bold;
-  background-color: #1a1a1a;
-  font-size: 20px;
-  color: orange;
-  left: 16px;
+  padding: 4px 6px;
+  border-radius: 50%;
 }
+
+/* Badge for cart count */
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #f08804;  /* Amazon orange */
+  color: white;               /* White text inside */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 1px 6px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+/* Cart text */
+.cart p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: white; /* matches Amazon header */
+}
+
 .order_container a:hover,
 .delivery:hover,
 .Logo_container a:hover,
@@ -107,32 +164,51 @@
   border-radius: 1px;
   border: 1px solid white;
 }
+
+/* Lower header container */
 .lower_container {
+  background-color: #232f3e; /* slightly lighter than main header */
   color: white;
-  background-color: #232f3e;
-  
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Arial, sans-serif;  /* same as Amazon */
+
 }
 
+/* Navigation list */
 .lower_container ul {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Each item */
 .lower_container ul li {
- 
   display: flex;
   align-items: center;
-  gap: 6px;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+.lower_container p {
+  font-size: 20px;   
+  font-weight: 600;  
+  margin: 0;         
+}
+/* Hover effect like Amazon */
+.lower_container ul li:hover {
+  background-color: #37475a; 
 }
 @media screen and (max-width: 576px){
     .header_container{
         display: flex;
         flex-direction: column;
         height: auto;
-        align-items: stretch; /* stretch children to full width */
+        align-items: stretch; 
         gap: 5px;
         padding: 5px 10px;
     }
