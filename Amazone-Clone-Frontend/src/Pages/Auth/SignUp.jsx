@@ -1,8 +1,9 @@
 import React from 'react'
+import LayOut from '../../components/LayOut/LayOut'
 
 const SignUp = () => {
   return (
-    <div>SignUp</div>
+    <LayOut>SignUp</LayOut>
   )
 }
 
