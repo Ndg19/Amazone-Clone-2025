@@ -1,7 +1,4 @@
-*{
-  margin: 0;
-  padding: 0;
-}
+
 .header_container {
   background-color: #131921; /* same as lower_container or a matching shade */
   display: flex;
@@ -81,9 +78,10 @@
   justify-content: center;
   max-width: 450px;
   gap: 10px;
+
 }
 .order_container p {
-  font-size: 10px;
+  font-size: 12px;
 }
 .order_container a {
   text-decoration: none;
@@ -152,11 +150,12 @@
 /* Cart text */
 .cart p {
   margin: 0;
+  margin-left: 4px;      /* space between icon and text */
   font-size: 14px;
   font-weight: 600;
-  color: white; /* matches Amazon header */
+  color: white;
+  align-self: center;    /* ensures it aligns with the icon */
 }
-
 .order_container a:hover,
 .delivery:hover,
 .Logo_container a:hover,
