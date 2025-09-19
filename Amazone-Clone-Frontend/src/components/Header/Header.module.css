@@ -106,9 +106,14 @@
 }
 
 .cart {
+  /* width: 41px; */
+  /* height: 28px; */
+  /* background-position: -218px -337px; */
+  padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
   text-decoration: none;
   font-weight: 500;
   color: white; /* "Cart" text */
@@ -128,12 +133,14 @@
 .cart span {
   position: absolute;
   top: -1px;
-  left: 20px;
-  background-color: black;  /* Amazon orange */
+  right: auto;
+  left: 14px;
+  background-color: black;  
   color:orange;
   font-size: 16px;
   font-weight: bold;
-  padding: 4px 6px;
+  padding: 2px 3px;
+  margin: 0;
   border-radius: 50%;
 }
 
@@ -142,8 +149,8 @@
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: #f08804;  /* Amazon orange */
-  color: white;               /* White text inside */
+  background-color: #f08804;  
+  color: white;               
   font-size: 12px;
   font-weight: bold;
   padding: 1px 6px;
@@ -152,13 +159,14 @@
 }
 
 /* Cart text */
-.cart p {
-  margin: 0;
-  margin-left: 4px;      /* space between icon and text */
-  font-size: 14px;
+.cart p {  
+  font-size: 15px;
   font-weight: 600;
   color: white;
-  align-self: center;    /* ensures it aligns with the icon */
+  margin: 0;
+  margin-right: 25px;
+
+  
 }
 .order_container a:hover,
 .delivery:hover,
