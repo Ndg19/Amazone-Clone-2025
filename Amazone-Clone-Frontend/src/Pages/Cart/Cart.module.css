@@ -1,0 +1,136 @@
+.cartContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.cartItems {
+  flex: 3;
+}
+
+.cartItems h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.cartItems h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.emptyCart {
+  font-size: 16px;
+  color: #777;
+  margin-top: 20px;
+}
+
+/* Each cart item row */
+.cartItemCard {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cartItemCard img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.cartItemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cartItemDetails h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.cartItemDetails p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.cartItemPrice {
+  font-size: 16px;
+  font-weight: bold;
+  color: #b12704;
+}
+
+/* Right-side summary box */
+.cartSummary {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  height: fit-content;
+  background: #f6f6f6;
+}
+
+.cartSummary p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.cartSummary span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.checkoutBtn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.checkoutBtn:hover {
+  background-color: #f7ca00;
+}
+
+/* ✅ Responsive (stack layout for mobile) */
+@media screen and (max-width: 768px) {
+  .cartContainer {
+    flex-direction: column;
+  }
+
+  .cartSummary {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .cartItemCard {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cartItemCard img {
+    width: 150px;
+    height: auto;
+  }
+
+  .cartItemDetails {
+    align-items: center;
+  }
+}
+ 

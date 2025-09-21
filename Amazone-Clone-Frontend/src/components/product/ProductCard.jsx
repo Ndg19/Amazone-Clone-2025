@@ -6,13 +6,13 @@ import { useContext } from "react";
 import { DataContext } from "../../DataProvider/DataProvider";
 import {Type} from "../../utility/Action.type"
 
-const ProductCard = ({ product, flex, renderDesc }) => {
+const ProductCard = ({ product, flex, renderDesc,renderAdd }) => {
   if (!product) return null; // safety check
 
   const { title, image, price, rating, id ,description} = product;
    
 const [state, dispatch] = useContext(DataContext);
-   // console.log(state);
+   //console.log(state);
 
     
 
@@ -43,7 +43,11 @@ const [state, dispatch] = useContext(DataContext);
         <div className={styles.price}>
           <CurrencyFormat value={price} />
         </div>
-        <button className={styles.addToCart} onClick={addToCart}>Add to Cart</button>
+        {renderAdd && (
+          <button className={styles.addToCart} onClick={addToCart}>
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );

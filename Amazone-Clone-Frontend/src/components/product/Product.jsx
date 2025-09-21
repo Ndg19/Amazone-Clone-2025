@@ -28,7 +28,7 @@ const Product = () => {
         <Loader />
       ) : products.length > 0 ? (
         products.map((product) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard product={product} key={product.id} renderAdd={true}/>
         ))
       ) : (
         <p>No products found</p>
