@@ -8,7 +8,10 @@ import { useContext } from "react";
 import { DataContext } from "../../DataProvider/DataProvider";
 
 const Header = () => {
- const[{basket} ,dispatch]=useContext(DataContext)
+ const[{basket} ]=useContext(DataContext)
+ const totalItem=basket?.reduce((amount,item)=>{
+  return item.amount+amount;
+ },0)
 // console.log(basket,length)
   return (
     <section className={styles.fixed}>
@@ -72,7 +75,7 @@ const Header = () => {
           <Link to="/Cart" className={styles.cart}>
             <div className={styles.iconWrapper}>
               <BiCart size={35} />
-              <span className={styles.badge}>{basket.length}</span>
+              <span className={styles.badge}>{totalItem}</span>
             </div>
             <p>Cart</p>
           </Link>
