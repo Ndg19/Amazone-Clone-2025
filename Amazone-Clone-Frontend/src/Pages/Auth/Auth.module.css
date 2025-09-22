@@ -1,0 +1,251 @@
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #fff;
+  padding-top: 30px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.authForm {
+  background-color: #fff;
+  padding: 20px 25px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.authForm h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #111;
+}
+
+.authForm label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #111;
+}
+
+.authForm input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #a6a6a6;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.authForm button {
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  padding: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.authForm button:hover {
+  background-color: #ddb347;
+}
+
+.helpText {
+  font-size: 12px;
+  color: #555;
+  margin-top: 15px;
+}
+
+.helpText a {
+  color: #0066c0;
+  text-decoration: none;
+}
+
+.helpText a:hover {
+  text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #767676;
+}
+
+.divider span {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.divider span::before,
+.divider span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider span::before {
+  left: 0;
+}
+
+.divider span::after {
+  right: 0;
+}
+
+/* Create Account Button */
+.createAccountBtn {
+  display: inline-block;
+  width: 350px;
+  text-align: center;
+  background-color: #e7e9ec;
+  border: 1px solid #adb1b8;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  transition: background 0.2s;
+}
+
+.createAccountBtn:hover {
+  background-color: #d7d9dc;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+}
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f3f3f3;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.authForm {
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.authForm h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #111;
+}
+
+.authForm label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.authForm input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.authForm button {
+  background-color: #ffd814;
+  color: #111;
+  border: 1px solid #fcd200;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authForm button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.helpText {
+  font-size: 12px;
+  color: #555;
+  margin-top: 10px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.createAccountBtn {
+  background-color: #e7e9ec;
+  color: #111;
+  border: 1px solid #a6a6a6;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.createAccountBtn:hover {
+  background-color: #d5d5d5;
+}
+
+.loggedInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.signOutBtn {
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.signOutBtn:hover {
+  background-color: #f7ca00;
+}

@@ -1,18 +1,32 @@
 import { BsSearch } from "react-icons/bs";
 import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css"; // ✅ CSS Modules
 import LowerHeader from "./LowerHeader";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../../DataProvider/DataProvider";
+import { auth } from "../../utility/firebase";
+import { ClipLoader } from "react-spinners";
 
 const Header = () => {
- const[{basket} ]=useContext(DataContext)
- const totalItem=basket?.reduce((amount,item)=>{
-  return item.amount+amount;
- },0)
-// console.log(basket,length)
+  const [{ basket, user }, dispatch] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
+
+  const [loading, setLoading] = useState(false);
+
+  const handleSignOut = async () => {
+    setLoading(true);
+    try {
+      await auth.signOut();
+      dispatch({ type: "SET_USER", user: null });
+    } catch (err) {
+      console.error("Sign out error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className={styles.fixed}>
       <section className={styles.header_container}>
@@ -57,13 +71,32 @@ const Header = () => {
             </select>
           </Link>
 
-          {/* Sign in */}
-          <Link to="/SignUp">
-            <div>
-              <p>Sign In</p>
-              <span>Account & Lists</span>
+          {/* Sign in / Sign out */}
+          {user ? (
+            <div
+              onClick={handleSignOut}
+              style={{
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+              }}
+            >
+              <p>Hello {user?.email?.split("@")[0]}</p>
+              {loading ? (
+                <ClipLoader size={30} color="yellow" />
+              ) : (
+                <span>Sign Out</span>
+              )}
             </div>
-          </Link>
+          ) : (
+            <Link to="/Auth">
+              <div>
+                <p>Hello, Sign In</p>
+                <span>Account & Lists</span>
+              </div>
+            </Link>
+          )}
 
           {/* Orders */}
           <Link to="/Orders">
