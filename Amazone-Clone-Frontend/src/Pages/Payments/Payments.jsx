@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import { useStateValue } from "../../DataProvider/DataProvider";
 import { getBasketTotal } from "../../utility/reducer";
 import ProductCard from "../../components/product/ProductCard";
 import LayOut from "../../components/LayOut/LayOut";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { DataContext } from "../../DataProvider/DataProvider";
+import { doc, setDoc } from "firebase/firestore";
+
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 import { axiosInstance } from "../../Api/axios";
 import styles from "./payments.module.css";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { db } from "../../utility/firebase";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -17,16 +26,17 @@ const PaymentForm = ({ basket }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const [{ user }] = useContext(DataContext);
 
   const [processing, setProcessing] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
-  // Generate client secret when basket changes
+  // Generate client secret whenever basket changes
   useEffect(() => {
     if (basket.length > 0) {
-      const total = Math.round(getBasketTotal(basket) * 100);
+      const total = Math.round(getBasketTotal(basket) * 100); // cents
       axiosInstance
         .post(`/payment/create?total=${total}`)
         .then((res) => {
@@ -42,7 +52,7 @@ const PaymentForm = ({ basket }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!stripe || !elements || !clientSecret) return;
+    if (!stripe || !elements || !clientSecret || !user) return;
 
     setProcessing(true);
     const cardElement = elements.getElement(CardElement);
@@ -52,22 +62,36 @@ const PaymentForm = ({ basket }) => {
       return;
     }
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: { card: cardElement },
-    });
+    try {
+      const payload = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { card: cardElement },
+      });
 
-    if (payload.error) {
-      setError(payload.error.message);
-      setProcessing(false);
-    } else {
+      if (payload.error) {
+        setError(payload.error.message);
+        setProcessing(false);
+        return;
+      }
+
+      const paymentIntent = payload.paymentIntent;
+
+      // Store order in Firestore
+      await setDoc(doc(db, "users", user.uid, "orders", paymentIntent.id), {
+        basket,
+        amount: paymentIntent.amount,
+        created: paymentIntent.created,
+      });
+
       setError(null);
       setSucceeded(true);
       setProcessing(false);
+
       console.log("Payment succeeded!");
-      // Wait 1–2 seconds before navigating
-      setTimeout(() => {
-        navigate("/orders");
-      }, 1500);
+      setTimeout(() => navigate("/orders"), 1500);
+    } catch (err) {
+      console.error("Payment/Firestore error:", err);
+      setError(err.message);
+      setProcessing(false);
     }
   };
 
@@ -76,7 +100,11 @@ const PaymentForm = ({ basket }) => {
       <CardElement
         options={{
           style: {
-            base: { fontSize: "16px", color: "#424770", "::placeholder": { color: "#aab7c4" } },
+            base: {
+              fontSize: "16px",
+              color: "#424770",
+              "::placeholder": { color: "#aab7c4" },
+            },
             invalid: { color: "#9e2146" },
           },
         }}
