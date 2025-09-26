@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useStateValue } from "../../DataProvider/DataProvider";
 import { getBasketTotal } from "../../utility/reducer";
 import ProductCard from "../../components/product/ProductCard";
@@ -19,6 +19,7 @@ import styles from "./payments.module.css";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../utility/firebase";
+import { Type } from "../../utility/Action.type";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -26,7 +27,7 @@ const PaymentForm = ({ basket }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  const [{ user }] = useContext(DataContext);
+  const [{ user }, dispatch] = useContext(DataContext);
 
   const [processing, setProcessing] = useState(false);
   const [succeeded, setSucceeded] = useState(false);
@@ -81,6 +82,10 @@ const PaymentForm = ({ basket }) => {
         amount: paymentIntent.amount,
         created: paymentIntent.created,
       });
+
+      // empyty the basket
+
+      dispatch({ type: Type.EMPTY_BASKET });
 
       setError(null);
       setSucceeded(true);
