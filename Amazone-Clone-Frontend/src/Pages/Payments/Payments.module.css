@@ -90,8 +90,8 @@
 
 /* Product image */
 .flex img {
-  width: 100px !important;
-  height: 100px !important;
+  width: 140px !important;
+  height: auto !important;
   flex-shrink: 0;
 }
 

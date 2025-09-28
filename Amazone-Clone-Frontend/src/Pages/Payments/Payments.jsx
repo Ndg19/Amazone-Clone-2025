@@ -15,7 +15,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { axiosInstance } from "../../Api/axios";
-import styles from "./payments.module.css";
+import styles from "./Payments.module.css";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../utility/firebase";
