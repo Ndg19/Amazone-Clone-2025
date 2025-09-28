@@ -1,11 +1,11 @@
 /* Grid layout for product listing */
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
-  gap: 10px; /* space between cards */
-  padding: 0; /* no extra padding */
-  max-width: 1200px; /* overall container width */
-  margin: 0 auto; /* center the container */
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 10px;
+  padding: 0; 
+  max-width: 1200px;
+  margin: 0 auto; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -99,7 +99,7 @@
   flex-direction: row;      /* image left, content right */
   gap: 50px;                /* space between image and content */
   width: 100%;
-  height: 50vh;             /* total container height */
+  height: 50vh;             
   box-shadow: none;
   padding: 20px;
   align-items: flex-start;
@@ -112,7 +112,7 @@
   border-radius: 6px;
 }
 
-.product_fixed .cardContent {               /* fill remaining space */
+.product_fixed .cardContent {           
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

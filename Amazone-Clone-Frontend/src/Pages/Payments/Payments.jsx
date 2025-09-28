@@ -153,7 +153,7 @@ const Payments = () => {
               <h3>Delivery Address</h3>
               <div className={styles.sectionContent}>
                 <p>{user?.email}</p>
-                <p>123 React Lane</p>
+                <p> 9.036246813411353 Bole</p>
                 <p>Addis Ababa, Ethiopia</p>
               </div>
             </div>

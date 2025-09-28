@@ -1,4 +1,4 @@
-.fixed{
+.fixed {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -10,7 +10,6 @@
   align-items: center;
   color: white;
   height: 70px;
- 
 }
 .Logo_container {
   align-items: center;
@@ -25,20 +24,20 @@
   vertical-align: middle;
 }
 .delivery {
-  display: flex;         /* make children side by side */
-  align-items: center;   /* vertical centering */
-  gap: 6px;              /* spacing between icon and text */
+  display: flex; /* make children side by side */
+  align-items: center; /* vertical centering */
+  gap: 6px; /* spacing between icon and text */
   padding: 5px;
   font-weight: bold;
 }
 
 .delivery p {
   font-size: 12px;
-  margin: 0;             /* remove default p margin */
+  margin: 0; /* remove default p margin */
 }
 
 .delivery span {
-  display: block;        /* text span behaves like block inside */
+  display: block; /* text span behaves like block inside */
   font-size: 14px;
 }
 
@@ -82,7 +81,6 @@
   justify-content: center;
   max-width: 450px;
   gap: 10px;
-
 }
 .order_container p {
   font-size: 12px;
@@ -106,9 +104,6 @@
 }
 
 .cart {
-  /* width: 41px; */
-  /* height: 28px; */
-  /* background-position: -218px -337px; */
   padding: 0;
   margin: 0;
   display: flex;
@@ -126,8 +121,7 @@
 }
 
 .iconWrapper svg {
-  color: white;              /* cart icon color */
-  
+  color: white; /* cart icon color */
 }
 
 .cart span {
@@ -135,8 +129,8 @@
   top: -1px;
   right: auto;
   left: 14px;
-  background-color: black;  
-  color:orange;
+  background-color: black;
+  color: orange;
   font-size: 16px;
   font-weight: bold;
   padding: 2px 3px;
@@ -149,8 +143,8 @@
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: #f08804;  
-  color: white;               
+  background-color: #f08804;
+  color: white;
   font-size: 12px;
   font-weight: bold;
   padding: 1px 6px;
@@ -159,14 +153,12 @@
 }
 
 /* Cart text */
-.cart p {  
+.cart p {
   font-size: 15px;
   font-weight: 600;
   color: white;
   margin: 0;
   margin-right: 25px;
-
-  
 }
 .order_container a:hover,
 .delivery:hover,
@@ -183,8 +175,7 @@
   padding: 8px 20px;
   font-size: 14px;
   font-weight: 500;
-  font-family: Arial, sans-serif;  /* same as Amazon */
-
+  font-family: Arial, sans-serif; /* same as Amazon */
 }
 
 /* Navigation list */
@@ -206,49 +197,111 @@
   transition: background-color 0.2s;
 }
 .lower_container p {
-  font-size: 20px;   
-  font-weight: 600;  
-  margin: 0;         
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
 }
 /* Hover effect like Amazon */
 .lower_container ul li:hover {
-  background-color: #37475a; 
+  background-color: #37475a;
 }
-@media screen and (max-width: 576px){
-    .header_container{
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        align-items: stretch; 
-        gap: 5px;
-        padding: 5px 10px;
-    }
+/* Mobile responsiveness for header */
+@media screen and (max-width: 768px) {
+  /* Stack main header vertically */
+  .header_container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+    height: auto;
+  }
 
-    /* Hide some links to make header compact */
-    .order_container {
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .order_container a.language,
-    .order_container a:not(:first-child):not(.cart) {
-        display: none;
-    }
+  /* Logo + delivery in row, smaller logo */
+  .Logo_container {
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .Logo_container img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+  }
+  .delivery {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .delivery p {
+    font-size: 10px;
+  }
+  .delivery span {
+    font-size: 12px;
+  }
 
-    /* Make search full width */
-    .search {
-        width: 100%;
-        margin: 5px 0;
-    }
+  /* Search bar full width */
+  .search {
+    width: 100%;
+    flex: 1;
+    margin: 5px 0;
+  }
+  .search input {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .search select {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .search svg {
+    padding: 6px;
+  }
 
-    .Logo_container {
-        justify-content: center;
-        margin-bottom: 5px;
-    }
+  /* Order container adjustments */
+  .order_container {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
 
-    /* Lower header - scrollable links if needed */
-    .lower_container ul {
-        flex-wrap: wrap;
-        gap: 5px;
-        justify-content: center;
-    }
+  /* Always show Sign In and Returns on mobile */
+  .order_container > a:not(.cart),
+  .order_container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+    font-size: 12px;
+  }
+
+  /* Hide language selector on mobile */
+  .order_container .language .language img {
+    display: none;
+  }
+
+  /* Cart adjustments */
+  .cart {
+    gap: 5px;
+  }
+  .cart p {
+    font-size: 12px;
+  }
+  .iconWrapper svg {
+    width: 28px;
+    height: 28px;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+
+  /* Lower header responsive */
+  .lower_container ul {
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    font-size: 12px;
+  
+  }
 }

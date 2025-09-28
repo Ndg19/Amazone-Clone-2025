@@ -85,6 +85,7 @@
   display: flex !important; /* Row: image + info */
   align-items: center; /* Vertical alignment */
   gap: 10px;
+  max-width: 250px !important;
 }
 
 /* Product image */
@@ -162,14 +163,96 @@
   margin-top: 10px;
 }
 
-/* Responsive: stack info on smaller screens */
+/* Responsive for tablets and smaller screens */
 @media screen and (max-width: 768px) {
-  .flex > div > * {
-    flex-direction: column;
-    align-items: flex-start;
+  .checkoutContainer {
+    padding: 20px;
   }
-  .flex .productInfo {
+
+  .checkoutTitle {
+    font-size: 20px;
+  }
+
+  .sectionRow {
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
+  }
+
+  .sectionRow h3 {
+    font-size: 16px;
+    min-width: auto;
+  }
+
+  .flex {
+    width: 100% !important;
+  }
+
+  .flex img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .flex .title,
+  .flex .price,
+  .flex .stars,
+  .flex .productQuantity {
+    font-size: 11px !important;
+  }
+
+  .paymentForm {
+    max-width: 100%;
+  }
+
+  .payButton {
+    height: 35px;
+    font-size: 14px;
   }
 }
+
+/* Responsive for mobile phones */
+@media screen and (max-width: 576px) {
+  .checkoutContainer {
+    padding: 15px;
+  }
+
+  .checkoutTitle {
+    font-size: 18px;
+  }
+
+  .sectionRow {
+    gap: 10px;
+  }
+
+  .sectionRow h3 {
+    font-size: 14px;
+  }
+
+  .flex img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .flex .title,
+  .flex .price,
+  .flex .stars,
+  .flex .productQuantity {
+    font-size: 10px !important;
+  }
+
+  .paymentForm {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .payButton {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .hh {
+    margin-left: 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
